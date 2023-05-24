@@ -129,7 +129,41 @@ td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    border: solid 1px #000000;
 }
 td p{
     font-size: 12px;
+}
+.estadoAceptado{
+    background-color: #009900; 
+    padding: 3%;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+    margin: 2px 20px;
+    font-size: 16px;
+    width: 75px;
+}
+.estadoRechazado{
+    background-color: #FF0000; 
+    padding: 3%;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+    margin: 0 20px;
+    font-size: 16px;
+    width: 75px;
+}
+.estadoEditar{
+    background-color: #0099d1; 
+    padding: 3%;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+    margin: 2px 20px;
+    font-size: 16px;
+    width: 75px;
 }

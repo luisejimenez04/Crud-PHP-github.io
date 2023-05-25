@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="header__logo">
-            <a href="login.html"><img src="img/logo.jpg" alt="logo" width="100px"></a>
-            <h2><a href="login.html">Lorem Ipsum</a></h2>
+            <a href="index.php"><img src="img/logo.jpg" alt="logo" width="100px"></a>
+            <h2><a href="index.php">Lorem Ipsum</a></h2>
         </div>
         <nav>
             <ul>

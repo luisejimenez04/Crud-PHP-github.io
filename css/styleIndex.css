@@ -1,62 +1,31 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
-body {
-    display: flex;
-}
-
-aside {
+.container{
+    width: 100vw;
     height: 100vh;
-    background-color: #0099d1;
-    width: 20%;
     display: flex;
-    flex-direction: column;
+}
+
+.left {
+    background-color: #0099d1;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left p {
     text-align: center;
+    margin-top: 300px;
 }
 
-aside img {
-    margin: 30px auto;
-    width: 150px;
+.right {
+    width: 70%;
 }
-
-aside h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #FFFFFF;
-    margin-bottom: 30px;
-}
-
-aside li {
-    width: 100%;
-    padding: 25px;
-    border-radius: 20px;
-    transition: ease .5s all;
-}
-
-aside li:hover {
-    background: #210049;
-}
-
-aside a {
-    text-decoration: none;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-aside a:hover {
-    text-decoration: underline;
-}
-
-main {
-    width: 80%;
-}
-
-main h1 {
+.right h1 {
     text-transform: uppercase;
     color: #cccccc;
     margin-bottom: 5%;
@@ -65,47 +34,42 @@ main h1 {
     font-size: 2.1em;
     font-weight: bold;
 }
-
-.container {
+.right__content {
+    padding-left: 5%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
 }
-
-form {
-    width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f2f2f2;
+.right__content h2 {
+    text-transform: uppercase;
+    font-size: 2em;
+    margin-bottom: 2%;
+    font-weight: bold;
 }
-
-.form__info textarea {
-    resize: none;
+.right__content form {
+    display: flex;
+    flex-direction: column;
 }
-
-form label {
+.right__content label {
     font-size: 20px;
     font-weight: bold;
 }
-
-form input[type="date"],
-input[type="time"],
-input[type="tel"] {
+.right__content input[type='email'] {
+    border-style: none;
+    border-bottom: solid 1px black;
     padding: 10px;
     margin-bottom: 20px;
     font-size: 18px;
 }
-
-form label,
-form input[type="submit"] {
-    display: block;
-    margin-bottom: 10px;
+.right__content input[type='password'] {
+    border-style: none;
+    border-bottom: solid 1px black;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
-
-form input[type="submit"] {
-    background-color: #0099d1;
+.right__content input[type='submit'] {
+    background-color: #0099d1; 
     padding: 3%;
     cursor: pointer;
     color: #fff;
@@ -114,56 +78,10 @@ form input[type="submit"] {
     margin: auto auto 10px;
     font-size: 16px;
 }
-main h2{
-    margin-bottom: 15px;
-    font-size: 32px;
-    text-align: center;
+.right__content form a {
+    font-weight: bold;
+    text-decoration: none;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    border: solid 1px #000000;
-}
-td p{
-    font-size: 12px;
-}
-.estadoAceptado{
-    background-color: #009900; 
-    padding: 3%;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 700;
-    border-style: none;
-    margin: 2px 20px;
-    font-size: 16px;
-    width: 75px;
-}
-.estadoRechazado{
-    background-color: #FF0000; 
-    padding: 3%;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 700;
-    border-style: none;
-    margin: 0 20px;
-    font-size: 16px;
-    width: 75px;
-}
-.estadoEditar{
-    background-color: #0099d1; 
-    padding: 3%;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 700;
-    border-style: none;
-    margin: 2px 20px;
-    font-size: 16px;
-    width: 75px;
+.right__content form a:hover {
+    text-decoration: underline;
 }

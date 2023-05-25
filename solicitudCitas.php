@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,13 +19,13 @@
 
 <body>
     <aside>
-        <img src="img/usuario.png" alt="perfil" width="100px">
+        <a href="index.php"><img src="img/usuario.png" alt="perfil" width="100px"></a>
         <h2>Hola!</h2>
         <nav>
             <ul>
-                <li style="background-color: #2980B9;"><a href="solicitudCitas.html">Solicitar</a></li>
-                <li><a href="estadoCitas.html">Estado de cita</a></li>
-                <li><a href="consultarCitas.html">Consultar citas</a></li>
+                <li style="background-color: #2980B9;"><a href="solicitudCitas.php">Solicitar</a></li>
+                <li><a href="estadoCitas.php">Estado de cita</a></li>
+                <li><a href="consultarCitas.php">Consultar citas</a></li>
                 <li><a href="#">Resumen</a></li>
             </ul>
         </nav>
@@ -37,18 +40,18 @@
                     <br><br>
                 </div>
 
-               <div class="form__data">
-                <label for="telefono">Número de teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required><br><br>
+                <div class="form__data">
+                    <label for="telefono">Número de teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required><br><br>
 
-                <label for="fecha">Fecha de la cita:</label>
-                <input type="date" id="fecha" name="fecha" required><br><br>
+                    <label for="fecha">Fecha de la cita:</label>
+                    <input type="date" id="fecha" name="fecha" required><br><br>
 
-                <label for="hora">Hora de la cita:</label>
-                <input type="time" id="hora" name="hora" required><br><br>
+                    <label for="hora">Hora de la cita:</label>
+                    <input type="time" id="hora" name="hora" required><br><br>
 
-                <input type="submit" value="Enviar">
-               </div>
+                    <input type="submit" value="Enviar">
+                </div>
             </form>
         </div>
     </main>

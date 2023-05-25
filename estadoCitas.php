@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -14,13 +17,13 @@
     </head>
 <body>
     <aside>
-        <img src="img/usuario.png" alt="perfil" width="100px">
+    <a href="index.php"><img src="img/usuario.png" alt="perfil" width="100px"></a>
         <h2>Hola!</h2>
         <nav>
             <ul>
-                <li><a href="solicitudCitas.html">Solicitar</a></li>
-                <li style="background-color: #2980B9;"><a href="estadoCitas.html">Estado de cita</a></li>
-                <li><a href="consultarCitas.html">Consultar citas</a></li>
+                <li><a href="solicitudCitas.php">Solicitar</a></li>
+                <li style="background-color: #2980B9;"><a href="estadoCitas.php">Estado de cita</a></li>
+                <li><a href="consultarCitas.php">Consultar citas</a></li>
                 <li><a href="#">Resumen</a></li>
             </ul>
         </nav>
@@ -46,7 +49,7 @@
                 <td><?php echo $tarea['estado']; ?></td>
                 <td><?php echo $tarea['creado']; ?></td>
                 <td><?php echo $tarea['modificado']; ?></td>
-                 -->
+                -->
             </tr>
         </table>
     

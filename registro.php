@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
     <main>
        <div class="container">
-        <h2>Formulario de Registro</h2>
+        <img src="img/hospital.png" alt="imagendeRegistro">
         <div class="content">
             <form  method="POST" action="registro.php">
                 <label for="nombre">Nombre:</label>

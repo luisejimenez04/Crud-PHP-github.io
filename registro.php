@@ -14,18 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO usuario (nombre, apellido, edad, numeroIdentificacion, correo, contrasena, rol)
         VALUES ('$nombre', '$apellido', $edad, $identificacion, '$correo', '$contrasena', '$rol')";
 
+    
+
     $sql2 = "INSERT INTO medico (nombre, apellido, correo, contrasena)
         VALUES ('$nombre', '$apellido', '$correo', '$contrasena')";
 
-    $sql3 = "INSERT INTO paciente (nombre, apellido, correo, contrasena)
-        VALUES ('$nombre', '$apellido', '$correo', '$contrasena')";
+    $id_usuario = "SELECT id_usuario FROM usuario WHERE correo = '$correo'";
+    
     if ($conn->query($sql) === TRUE) {
-        echo '<script>alert("Se ha registrado correctamente");</script>';
+        $stmt = $conn->query($id_usuario); 
+        $fila = $stmt->fetch_assoc();
+        $id_usuario = $fila["id_usuario"];
+        $sql3 = "INSERT INTO paciente (nombre, apellido, correo, contrasena, id_usuario)
+          VALUES('$nombre', '$apellido', '$correo', '$contrasena', '$id_usuario')";
         if($rol == 'medico'){
             $conn->query($sql2);
+            echo '<script>alert("Se ha registrado correctamente");</script>';
         }
         if($rol == 'paciente'){
-            $conn->query($sql3); 
+            $conn->query($sql3);
+            echo '<script>alert("Se ha registrado correctamente");</script>'; 
         }
     } else {
         echo '<script>alert("Registro rechazado - Vuelve a intentarlo");</script>';

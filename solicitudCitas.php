@@ -1,5 +1,29 @@
 <?php
+require_once 'db.php'; 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $observaciones = $_POST["observaciones"];
+    $telefono = $_POST["telefono"];
+    $fecha = $_POST["fecha_cita"];
+    $hora = $_POST["hora_cita"];
 
+    session_start();
+    $id_usario = $_SESSION['infoUser']['id_usuario'];
+    $id_paciente = "SELECT id_paciente FROM paciente WHERE id_usuario = '$id_usuario'";
+    $stmt = $conn->query($id_paciente); 
+    $fila = $stmt->fetch_assoc();
+    $id_paciente2 = $fila["id_paciente"];
+    printf($id_paciente2);
+   // INSERT INTO `gestion_cita`(`observaciones`, `telefono`, `fecha_cita`, `hora_cita`)
+   //  VALUES ('[value-4]','[value-5]','[value-6]','[value-7]')
+    $sql = "INSERT INTO gestion_cita (id_paciente,observaciones, telefono, fecha_cita, hora_cita, estado)
+        VALUES ('$id_paciente2','$observaciones', '$telefono', '$fecha', '$hora', 'En espera')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo '<script>alert("Se ha enviado correctamente");</script>';
+    } else {
+        echo '<script>alert("Solicitud fallida - Intentalo más tarde");</script>';
+    }
+} 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,10 +48,10 @@
     <main>
         <h1>Solicitud de cita</h1>
         <div class="container">
-            <form>
+            <form method= "POST" action= "solicitudCitas.php" >
                 <div class="form__info">
                     <label for="motivo">Motivo de la cita:</label>
-                    <textarea name="motivo" id="motivo" cols="30" rows="3" required></textarea>
+                    <textarea name="observaciones" id="observaciones" cols="30" rows="3" required></textarea>
                     <br><br>
                 </div>
 
@@ -36,10 +60,10 @@
                     <input type="tel" id="telefono" name="telefono" required><br><br>
 
                     <label for="fecha">Fecha de la cita:</label>
-                    <input type="date" id="fecha" name="fecha" required><br><br>
+                    <input type="date" id="fecha_cita" name="fecha_cita" required><br><br>
 
                     <label for="hora">Hora de la cita:</label>
-                    <input type="time" id="hora" name="hora" required><br><br>
+                    <input type="time" id="hora_cita" name="hora_cita" required><br><br>
 
                     <input type="submit" value="Enviar">
                 </div>

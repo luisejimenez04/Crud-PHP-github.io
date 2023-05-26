@@ -1,5 +1,9 @@
 <?php
-
+require 'db.php'; 
+$sql = "SELECT * FROM gestion_cita";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,16 +36,17 @@
                 <th>Hora</th>
                 <th>Estado</th>
             </tr>
-            <tr>
-                <!--
-                <td> <?php echo $tarea['id']; ?></td>
-                <td><?php echo $tarea['titulo']; ?></td>
-                <td><?php echo $tarea['Descripcion']; ?></td>
-                <td><?php echo $tarea['estado']; ?></td>
-                <td><?php echo $tarea['creado']; ?></td>
-                <td><?php echo $tarea['modificado']; ?></td>
-                -->
-            </tr>
+            <?php foreach ($cita as $citas): ?> 
+               <tr> 
+               <td><p>---</p></td> 
+               <td><p>---</p></td> 
+               <td><?php echo  $citas['observaciones']; ?></td>
+               <td><?php echo  $citas['telefono']; ?></td>  
+               <td><?php echo  $citas['fecha_cita']; ?></td>
+               <td><?php echo  $citas['hora_cita']; ?></td>
+               <td><?php echo  $citas['estado']; ?></td>      
+               </tr> 
+               <?php endforeach; ?> 
         </table>
     
         <!-- Formulario para agregar una nueva tarea -->

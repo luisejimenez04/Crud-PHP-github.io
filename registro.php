@@ -4,20 +4,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
     $edad = $_POST["edad"];
-    $identificacion = $_POST["identificacion"];
+    $identificacion = $_POST["numeroIdentificacion"];
     $correo = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $rol = $_POST["rol"];
 
     // INSERTAR datos en la base de datos!!!!!!!!!!!!!!!!!!!!!!!
     //nombre	apellido	edad	identificacion	correo	contrasena	rol	
-    $sql = "INSERT INTO registro (nombre, apellido, edad, identificacion, correo, contrasena, rol)
+    $sql = "INSERT INTO usuario (nombre, apellido, edad, numeroIdentificacion, correo, contrasena, rol)
         VALUES ('$nombre', '$apellido', $edad, $identificacion, '$correo', '$contrasena', '$rol')";
 
+    $sql2 = "INSERT INTO medico (nombre, apellido, correo, contrasena)
+        VALUES ('$nombre', '$apellido', '$correo', '$contrasena')";
+
+    $sql3 = "INSERT INTO paciente (nombre, apellido, correo, contrasena)
+        VALUES ('$nombre', '$apellido', '$correo', '$contrasena')";
     if ($conn->query($sql) === TRUE) {
-        echo '<script>alert("Registro exitoso");</script>';
+        echo '<script>alert("Se ha registrado correctamente");</script>';
+        if($rol == 'medico'){
+            $conn->query($sql2);
+        }
+        if($rol == 'paciente'){
+            $conn->query($sql3); 
+        }
     } else {
-        echo '<script>alert("Registro rechazado");</script>';
+        echo '<script>alert("Registro rechazado - Vuelve a intentarlo");</script>';
     }
 } 
 ?>
@@ -65,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="number" id="edad" name="edad" required><br><br>
 
                 <label for="identificacion">Número de Identificación:</label>
-                <input type="number" id="identificacion" name="identificacion" required><br><br>
+                <input type="number" id="numeroIdentificacion" name="numeroIdentificacion" required><br><br>
 
                 <label for="correo">Correo Electrónico:</label>
                 <input type="email" id="correo" name="correo" required><br><br>

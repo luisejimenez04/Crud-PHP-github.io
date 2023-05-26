@@ -1,7 +1,20 @@
 <?php
 require_once 'db.php';
 
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+ $correo = $_POST["correo"];
+ $contrasena = $_POST["contrasena"];
+ $sql = "SELECT * FROM usuario WHERE correo = '".$correo."' AND contrasena = '".$contrasena."'";
+ $stmt = $conn->query($sql); 
+ $fila = $stmt->fetch_assoc();
+ if ($fila) {
+    session_start();
+    $_SESSION['infoUser'] = $fila;
+    header("Location: inicio.php");
+ } else { 
+    echo '<script>alert("Correo y/o contraseña equivocada");</script>';
+ } 
+} 
 
 ?>
 <!DOCTYPE html>
@@ -29,11 +42,11 @@ require_once 'db.php';
             <h1>Hospital | Ore Por su Salud</h1>
             <div class="right__content">
                 <h2>Iniciar sesión</h2>
-                <form>
+                <form method="POST" action="index.php">
                     <label id="for">Correo</label>
                     <input type="email" id="correo" name="correo" required>
                     <label id="for">Contraseña</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="contrasena" name="contrasena" required>
                     <input type="submit" value="Iniciar" >
                     <p>Formulario de registro: <a href="registro.php">¡Haz click aquí!</a></p>
                 </form>

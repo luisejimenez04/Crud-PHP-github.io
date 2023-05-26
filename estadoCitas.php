@@ -16,18 +16,9 @@
     
     </head>
 <body>
-    <aside>
-    <a href="index.php"><img src="img/usuario.png" alt="perfil" width="100px"></a>
-        <h2>Hola!</h2>
-        <nav>
-            <ul>
-                <li><a href="solicitudCitas.php">Solicitar</a></li>
-                <li style="background-color: #2980B9;"><a href="estadoCitas.php">Estado de cita</a></li>
-                <li><a href="consultarCitas.php">Consultar citas</a></li>
-                <li><a href="#">Resumen</a></li>
-            </ul>
-        </nav>
-    </aside>
+   <?php
+    include 'funciones/func.php';
+   ?>
     <main>
         <h1>Estado actual de citas</h1>
         <h2>Mis registros</h2>

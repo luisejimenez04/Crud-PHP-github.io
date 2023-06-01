@@ -47,7 +47,7 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                $nombre = $row['nombre'];
-               echo $citas[$nombre];
+               echo $nombre;
                }   
                ?></p></td> 
                <td><p><?php
@@ -56,10 +56,10 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                $result = $conn->query($sql1);
                if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-               $nombre = $row['apellido'];
-               echo $citas[$nombre];
+               $apellido = $row['apellido'];
+               echo $apellido;
                }   
-               ?></p></td> 
+               ?></p></td>
                <td><p><?php echo  $citas['observaciones']; ?></p></td>
                <td><p><?php echo  $citas['telefono']; ?></p></td>  
                <td><p><?php echo  $citas['fecha_cita']; ?></p></td>

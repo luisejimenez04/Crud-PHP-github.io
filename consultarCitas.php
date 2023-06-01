@@ -39,8 +39,8 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 <th>Estado</th>
                 <th style="max-width: 50px; font-size: 12px;">Aceptar/Rechazar</th>
             </tr>
+            <?php foreach ($cita as $citas): ?> 
             <tr>
-             <?php foreach ($cita as $citas): ?> 
                 <td><p><?php
                $id_paciente = $citas['id_paciente'];
                $sql1 = "SELECT nombre FROM paciente WHERE id_paciente = '$id_paciente'";
@@ -48,7 +48,7 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                $nombre = $row['nombre'];
-               echo $citas[$nombre];
+               echo $nombre;
                }   
                ?></p></td> 
                <td><p><?php
@@ -57,8 +57,8 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                $result = $conn->query($sql1);
                if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-               $nombre = $row['apellido'];
-               echo $citas[$nombre];
+               $apellido = $row['apellido'];
+               echo $apellido;
                }   
                ?></p></td> 
                 <td><p><?php echo  $citas['observaciones']; ?></p></td>
@@ -71,8 +71,9 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                     <button type="button" class="estadoRechazado">---</button>
                     <button type="button" class="estadoEditar">---</button>
                 </td>    
-             <?php endforeach; ?>        
+                  
             </tr>
+            <?php endforeach; ?>   
         </table>
     </main>
 </body>

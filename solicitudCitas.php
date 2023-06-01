@@ -6,22 +6,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha = $_POST["fecha_cita"];
     $hora = $_POST["hora_cita"];
 
-    session_start();
-    $id_usario = $_SESSION['infoUser']['id_usuario'];
-    $id_paciente = "SELECT id_paciente FROM paciente WHERE id_usuario = '$id_usuario'";
-    $stmt = $conn->query($id_paciente); 
-    $fila = $stmt->fetch_assoc();
-    $id_paciente2 = $fila["id_paciente"];
-    printf($id_paciente2);
-   // INSERT INTO `gestion_cita`(`observaciones`, `telefono`, `fecha_cita`, `hora_cita`)
-   //  VALUES ('[value-4]','[value-5]','[value-6]','[value-7]')
-    $sql = "INSERT INTO gestion_cita (id_paciente,observaciones, telefono, fecha_cita, hora_cita, estado)
-        VALUES ('$id_paciente2','$observaciones', '$telefono', '$fecha', '$hora', 'En espera')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo '<script>alert("Se ha enviado correctamente");</script>';
-    } else {
-        echo '<script>alert("Solicitud fallida - Intentalo más tarde");</script>';
+    if (!isset($_SESSION)) {
+        session_start();
+        $id_usuario = $_SESSION['infoUser']['id_usuario'];
+        $id_paciente = "SELECT id_paciente FROM paciente WHERE id_usuario = '$id_usuario'";
+        $stmt = $conn->query($id_paciente); 
+        $fila = $stmt->fetch_assoc();
+        $id_paciente2 = $fila["id_paciente"];
+       // INSERT INTO `gestion_cita`(`observaciones`, `telefono`, `fecha_cita`, `hora_cita`)
+       //  VALUES ('[value-4]','[value-5]','[value-6]','[value-7]')
+        $sql = "INSERT INTO gestion_cita (id_paciente,observaciones, telefono, fecha_cita, hora_cita, estado)
+            VALUES ('$id_paciente2','$observaciones', '$telefono', '$fecha', '$hora', 'En espera')";
+    
+        if ($conn->query($sql) === TRUE) {
+            echo '<script>alert("Se ha enviado correctamente");</script>';
+        } else {
+            echo '<script>alert("Solicitud fallida - Intentalo más tarde");</script>';
+        }
     }
 } 
 ?>

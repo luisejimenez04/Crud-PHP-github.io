@@ -1,5 +1,9 @@
 <?php
-
+require 'db.php'; 
+$sql = "SELECT * FROM gestion_cita";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -36,19 +40,38 @@
                 <th style="max-width: 50px; font-size: 12px;">Aceptar/Rechazar</th>
             </tr>
             <tr>
-                
-                <td><p>Luis</p></td>
-                <td><p>Jiménez</p></td>
-                <td><?php echo $tarea['Descripcion']; ?></td>
-                <td><?php echo $tarea['estado']; ?></td>
-                <td><?php echo $tarea['creado']; ?></td>
-                <td><?php echo $tarea['modificado']; ?></td>
-                <td><p>En espera</p></td> 
+             <?php foreach ($cita as $citas): ?> 
+                <td><p><?php
+               $id_paciente = $citas['id_paciente'];
+               $sql1 = "SELECT nombre FROM paciente WHERE id_paciente = '$id_paciente'";
+               $result = $conn->query($sql1);
+               if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+               $nombre = $row['nombre'];
+               echo $citas[$nombre];
+               }   
+               ?></p></td> 
+               <td><p><?php
+               $id_paciente = $citas['id_paciente'];
+               $sql1 = "SELECT apellido FROM paciente WHERE id_paciente = '$id_paciente'";
+               $result = $conn->query($sql1);
+               if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+               $nombre = $row['apellido'];
+               echo $citas[$nombre];
+               }   
+               ?></p></td> 
+                <td><p><?php echo  $citas['observaciones']; ?></p></td>
+                <td><p><?php echo  $citas['telefono']; ?></p></td>  
+                <td><p><?php echo  $citas['fecha_cita']; ?></p></td>
+                <td><p><?php echo  $citas['hora_cita']; ?></p></td>
+                <td><p><?php echo  $citas['estado']; ?></p></td>  
                 <td style="max-width: 50px;">
-                    <button type="button" class="estadoAceptado" >Aceptar</button>
-                    <button type="button" class="estadoRechazado">Rechazar</button>
-                    <button type="button" class="estadoEditar">Editar</button>
-                </td>           
+                    <button type="button" class="estadoAceptado" >---</button>
+                    <button type="button" class="estadoRechazado">---</button>
+                    <button type="button" class="estadoEditar">---</button>
+                </td>    
+             <?php endforeach; ?>        
             </tr>
         </table>
     </main>

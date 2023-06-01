@@ -4,6 +4,8 @@ $sql = "SELECT * FROM gestion_cita";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,17 +38,35 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 <th>Hora</th>
                 <th>Estado</th>
             </tr>
-            <?php foreach ($cita as $citas): ?> 
+             <?php foreach ($cita as $citas): ?> 
                <tr> 
-               <td><p>---</p></td> 
-               <td><p>---</p></td> 
-               <td><?php echo  $citas['observaciones']; ?></td>
-               <td><?php echo  $citas['telefono']; ?></td>  
-               <td><?php echo  $citas['fecha_cita']; ?></td>
-               <td><?php echo  $citas['hora_cita']; ?></td>
-               <td><?php echo  $citas['estado']; ?></td>      
+               <td><p><?php
+               $id_paciente = $citas['id_paciente'];
+               $sql1 = "SELECT nombre FROM paciente WHERE id_paciente = '$id_paciente'";
+               $result = $conn->query($sql1);
+               if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+               $nombre = $row['nombre'];
+               echo $citas[$nombre];
+               }   
+               ?></p></td> 
+               <td><p><?php
+               $id_paciente = $citas['id_paciente'];
+               $sql1 = "SELECT apellido FROM paciente WHERE id_paciente = '$id_paciente'";
+               $result = $conn->query($sql1);
+               if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+               $nombre = $row['apellido'];
+               echo $citas[$nombre];
+               }   
+               ?></p></td> 
+               <td><p><?php echo  $citas['observaciones']; ?></p></td>
+               <td><p><?php echo  $citas['telefono']; ?></p></td>  
+               <td><p><?php echo  $citas['fecha_cita']; ?></p></td>
+               <td><p><?php echo  $citas['hora_cita']; ?></p></td>
+               <td><p><?php echo  $citas['estado']; ?></p></td>      
                </tr> 
-               <?php endforeach; ?> 
+             <?php endforeach; ?> 
         </table>
     
         <!-- Formulario para agregar una nueva tarea -->

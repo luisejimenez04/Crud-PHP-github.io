@@ -4,7 +4,9 @@
         <nav>
             <ul>             
                 <?php
-                session_start();
+                if(!isset($_SESSION)){
+                    session_start();
+                }
                 if($_SESSION['infoUser']['rol'] == 'medico' ){
                     ?>
                 <li><a href="consultarCitas.php">Consultar citas</a></li>

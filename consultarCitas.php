@@ -72,7 +72,7 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 <td><p><?php echo  $citas['estado']; ?></p></td>  
                 <td style="max-width: 50px;">
                     <button type="button" name='estadoAceptado' class="estadoAceptado">A</button>
-                    <button onclick="alerta_eliminar(<?php echo $citas['id_cita'] ?>)" type="button" class="estadoRechazado" name='estadoRechazado' >R</button>
+                    <a href="eliminar.php?id_cita=<?php echo $citas['id_cita'] ?>" class="estadoRechazado" name='estadoRechazado' >R</button>
                     <a href='editarCitas.php?id=<?php echo $citas['id_cita']; ?>'>  <button type='button' class='estadoEditar'>E</button></a>
                 </td>                    
             </tr>

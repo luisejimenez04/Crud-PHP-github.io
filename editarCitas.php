@@ -32,7 +32,7 @@
         <h1>Modificacion de la cita</h1>
         <h2>Datos</h2>
         <div class="container">
-            <form method= "POST" action= "prueba.php" >
+            <form method="POST" action= "prueba.php" >
                 <div class="form__data">
                     <label for="fecha">Fecha de la cita:</label>
                     <input type="date" id="fecha_cita" name="fecha_cita" 
@@ -41,7 +41,7 @@
                     <label for="hora">Hora de la cita:</label>
                     <input type="time" id="hora_cita" name="hora_cita" 
                     value="<?php echo $record['hora_cita']; ?>" required><br><br>        
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="hidden" name="id_cita" value="<?php echo $id; ?>">
                     <input type="submit" name="enviar" value="Actualizar">
                 </div>
             </form>

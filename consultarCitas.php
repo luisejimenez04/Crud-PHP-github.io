@@ -6,7 +6,6 @@ $stmt->execute();
 $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -19,7 +18,9 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="eliminar.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 <body>
    <?php
@@ -30,6 +31,8 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <h2>Lista de solicitudes</h2>
         <table>
             <tr>
+                <th style="max-width: 7
+                px; font-size: 10px;">id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th >Motivo</th>
@@ -41,6 +44,7 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </tr>
             <?php foreach ($cita as $citas): ?> 
             <tr>
+                <td style="max-width: 7px; font-size: 10px;"><?php echo  $citas['id_cita']; ?></td>
                 <td><p><?php
                $id_paciente = $citas['id_paciente'];
                $sql1 = "SELECT nombre FROM paciente WHERE id_paciente = '$id_paciente'";
@@ -67,12 +71,12 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 <td><p><?php echo  $citas['hora_cita']; ?></p></td>
                 <td><p><?php echo  $citas['estado']; ?></p></td>  
                 <td style="max-width: 50px;">
-                    <button type="button" class="estadoAceptado" >---</button>
-                    <button type="button" class="estadoRechazado">---</button>
-                    <button type="button" class="estadoEditar">---</button>
-                </td>    
-                  
+                    <button type="button" name='estadoAceptado' class="estadoAceptado">A</button>
+                    <button onclick="alerta_eliminar(<?php echo $citas['id_cita'] ?>)" type="button" class="estadoRechazado" name='estadoRechazado' >R</button>
+                    <a href='editarCitas.php?id=<?php echo $citas['id_cita']; ?>'>  <button type='button' class='estadoEditar'>E</button></a>
+                </td>                    
             </tr>
+            
             <?php endforeach; ?>   
         </table>
     </main>

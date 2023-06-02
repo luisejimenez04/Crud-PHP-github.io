@@ -67,28 +67,7 @@ $cita = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                <td><p><?php echo  $citas['estado']; ?></p></td>      
                </tr> 
              <?php endforeach; ?> 
-        </table>
-    
-        <!-- Formulario para agregar una nueva tarea -->
-        <!--
-        <h2>Agregar Nueva Tarea</h2>
-        <form action="create_tarea.php" method="POST">
-            <label for="title">Título:</label>
-            <input type="text" name="titulo" required><br>
-    
-            <label for="description">Descripción:</label>
-            <textarea name="descripcion" required></textarea><br>
-    
-            <label for="status">Estado:</label>
-            <select name="status" required>
-                <option value="Pendiente">Pendiente</option>
-                <option value="En Progreso">En Progreso</option>
-                <option value="Completada">Completada</option>
-            </select><br>
-    
-            <input type="submit" value="Agregar Tarea">
-        </form>
-        -->
+        </table>      
     </main>
 </body>
 </html>
